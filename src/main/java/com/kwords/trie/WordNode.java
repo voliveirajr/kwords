@@ -1,4 +1,4 @@
-package com.kwords.heap;
+package com.kwords.trie;
 
 public class WordNode {
     private String word;

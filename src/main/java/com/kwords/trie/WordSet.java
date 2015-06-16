@@ -1,4 +1,4 @@
-package com.kwords.heap;
+package com.kwords.trie;
 
 import java.util.Comparator;
 //import java.util.PriorityQueue;
@@ -12,7 +12,7 @@ public class WordSet extends TreeSet<WordNode>{
         super(new Comparator<WordNode>() {
             @Override
             public int compare(WordNode o1, WordNode o2) {
-                return o1.getCount()-o2.getCount();
+                return o1.getCount().compareTo(o2.getCount());
             }
         });
         this.capacity = capacity;
@@ -21,8 +21,8 @@ public class WordSet extends TreeSet<WordNode>{
     @Override
     public boolean add(WordNode e) {
         boolean b = super.add(e);
-        if (capacity > size()){
-            pollLast();
+        if (size() > capacity){
+            pollFirst();
         }
         return b;
     }
