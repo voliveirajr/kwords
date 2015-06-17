@@ -10,7 +10,7 @@ public class Trie {
         root.addWord(word);
     }
     
-    public Map<String, Integer> getWords(){
+    public WordSet getWords(){
         return TrieNode.getWords(root, "");        
     }
 

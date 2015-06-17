@@ -9,7 +9,8 @@ public class TrieNode {
     private int count = 0;
     private boolean isWord = false;
     private Map<Character, TrieNode> children = new HashMap<Character, TrieNode>();
-    private static Map<String, Integer> words = new HashMap<String, Integer>();
+    //TODO: fixed, reimplement strategy to build words
+    private static WordSet words = new WordSet(3);
 
     public TrieNode(Character c) {
         this.c = c;
@@ -36,13 +37,14 @@ public class TrieNode {
         }
     }
 
-    public static Map<String, Integer> getWords(TrieNode node, String chars) {
+    public static WordSet getWords(TrieNode node, String chars) {
         
         if(node.c!=null){
             chars += node.c;
         }
         if (node.isWord) {
-            words.put(chars.trim(), node.count);
+            //words.put(chars.trim(), node.count);
+            words.add(new WordNode(chars.trim(), node.count));
         }
         // If more letters still remain, continue traversing
         if (!node.children.isEmpty()) {
