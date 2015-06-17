@@ -18,12 +18,10 @@ public class TrieTest {
 		t.addWord("abcde");
 		t.addWord("fghij");
 		
-		Map<String, Integer> m = t.getWords();
+		WordSet m = t.getWords();
 		
-		Assert.assertTrue(m.get("abc") == 2);
-		Assert.assertTrue(m.get("abcde") == 3);
-		Assert.assertTrue(m.get("fghij") == 1);
-				
+		Assert.assertTrue(m.pollLast().getCount() == 3);
+		Assert.assertTrue(m.pollLast().getCount() == 2);
+		Assert.assertTrue(m.pollLast().getCount() == 1);
 	}
-
 }
